@@ -8,28 +8,25 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.filehub.data.StorageInfo
 import java.time.LocalTime
 
 @Composable
-fun StorageCircle(freeSpace: Int, usedSpace: Int) {
+fun StorageCircle(storageInfo: StorageInfo) {
+
+    val strokeColor : Color = Color.Blue.copy(alpha = 0.40f)
+    val strokeWidth = 33.dp
+    val usedPercentage = if(storageInfo.total.toInt() > 0){ storageInfo.used * 100 / storageInfo.total } else 0
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier.size(226.dp)
     ) {
-        val strokeColor : Color = Color.Blue.copy(alpha = 0.40f)
-        val strokeWidth = 33.dp
-        val usedPercentage = usedSpace*100 / (freeSpace + usedSpace)
-
         Canvas(modifier = Modifier.size(226.dp)) {
             drawCircle(
                 color = Color.LightGray,
