@@ -4,6 +4,7 @@ import android.os.Environment
 import android.os.StatFs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.io.File
 
 
 data class StorageInfo(val used: Long, val total: Long)
